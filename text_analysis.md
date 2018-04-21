@@ -144,7 +144,7 @@ mention <- title5 %>%
   filter(value != "") %>%
   group_by(publisher, Year, value) %>%
   summarise(freq = n()) %>%
-  top_n(n = 50, wt = freq)
+  ungroup()
 
 title6 <- title3 %>%
   mutate(trump = ifelse(grepl("trump",title),1,0),
@@ -184,10 +184,7 @@ mean of x mean of y<br />
 ## Data Visualization(R)
 Wordcloud of one-word and bigram
 ```r
-title5 %>%
-  group_by(Year, value) %>%
-  summarise(freq = n()) %>%
-  ungroup() %>%
+mention%>%
   filter(Year == "2017") %>% #get yearly wordcloud
   select(-Year) %>%
   arrange(desc(freq)) %>%
