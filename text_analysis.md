@@ -1,7 +1,7 @@
-## How to make the data speak
-### Data Extraction from BigQuery(SQL)
+# How to make the data speak
+## Data Extraction from BigQuery(SQL)
 
-### Data Wrangeling(R)
+## Data Wrangeling(R)
 ```r
 wsj <- read.csv("wsj.csv")
 bloomberg <- read.csv("bloomberg.csv")
@@ -50,7 +50,7 @@ title <- events %>%
 write_rds(title,"title.rda")
 write_rds(events,'events.rda')
 ```
-#### Text Processing
+### Text Processing
 Parse url to extrat the article titles
 ```r
 parsed_address <- url_parse(title$SOURCEURL)
@@ -77,7 +77,7 @@ title <- title %>%
                  ifelse((publisher == "WashingtonPost") & grepl("-",c) & !grepl(".html",c),c,b
 ```
 
-#### Getting words and bigrams
+### Getting words and bigrams
 Words
 ```r
 title2 <- title %>%
