@@ -5,13 +5,11 @@
 ``` sql
 SELECT * 
 FROM [gdelt-bq:full.events] 
-WHERE sourceurl 
-LIKE '%bloomberg.com%'; -- filter by source url
+WHERE sourceurl LIKE '%bloomberg.com%'; -- filter by source url
 
 SELECT * 
 FROM [gdelt-bq:full.events] 
-WHERE sourceurl 
-LIKE '%www.cosmopolitan.com%'; -- there is a Canandian website called agrocosmopolitan...
+WHERE sourceurl LIKE '%www.cosmopolitan.com%'; -- there is a Canandian website called agrocosmopolitan...
 ```
 The results from the query is too big(10,000 results limit) to be export directly from BigQuery's web UI, therefore, we need to create a table to store the results and export it to cloud and then download. Follows are the Google documentations for these steps.
 
