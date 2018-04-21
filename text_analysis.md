@@ -1,21 +1,16 @@
 # How to make the data speak
 ## Data Extraction from BigQuery(SQL)
+
+
 ``` sql
 SELECT * 
 FROM [gdelt-bq:full.events] 
 WHERE sourceurl 
-LIKE '%bloomberg.com%';
-
-
-SELECT
-  year,count(sourceurl) AS count
-FROM
-  [Publisher.Bloomberg]
-WHERE
-  sourceurl LIKE '%trump%'
-GROUP BY year
-ORDER BY count;
+LIKE '%bloomberg.com%'; -- filter by source url
 ```
+[Create Table in BigQuery](https://cloud.google.com/bigquery/docs/tables)
+Ctreat a bucket in Google Cloud
+[Export Table to Google Cloud](https://cloud.google.com/bigquery/docs/exporting-data)
 
 ## Data Wrangeling(R)
 ```r
