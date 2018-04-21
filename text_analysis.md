@@ -196,12 +196,8 @@ mention%>%
 ```
 Pubisher(Washington Post, WSJ, New York Times, Bloomberg, Vogue, Cosmopolitan, New Yorker)
 ```r
-title5 %>%
-  filter(publisher == "WashingtonPost" ) %>%  #get wordcloud by publisher 
-  group_by(Year, value) %>%
-  summarise(freq = n()) %>%
-  ungroup() %>%
-  filter(Year == "2017") %>% #filter out by year
+mention %>%
+  filter(publisher == "WSJ" & Year == "2017") %>% #get wordcloud by publisher and filter out by year
   select(-Year) %>%
   arrange(desc(freq)) %>%
   top_n(200) %>%
