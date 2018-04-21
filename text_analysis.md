@@ -58,7 +58,8 @@ parsed_address <- url_parse(title$SOURCEURL)
 title$path  <- parsed_address$path
 
 title <- title %>%
-  separate(path,into = c("a","b","c","d","e","f","g","h","i","j"), sep = "/", remove = FALSE, extra = "merge", fill = "right") %>%
+  separate(path,into = c("a","b","c","d","e","f","g","h","i","j"), sep = "/", 
+            remove = FALSE, extra = "merge", fill = "right") %>%
   mutate(title = ifelse((publisher != "WashingtonPost") & grepl("-",j),j,
                  ifelse((publisher != "WashingtonPost") & grepl("-",i),i,
                  ifelse((publisher != "WashingtonPost") & grepl("-",h),h,
