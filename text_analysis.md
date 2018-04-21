@@ -80,13 +80,8 @@ title <- title %>%
 title$title <- gsub("-", " ", title$title, fixed=TRUE)
 title$title <- gsub("_", " ", title$title, fixed=TRUE)
 title$title <- gsub(".html", "", title$title, fixed=TRUE)
-title$title <- gsub("%E2%80%8B", "", title$title, fixed=TRUE)
-title$title <- gsub("([0-9]+).*$", "", title$title, fixed=TRUE)
 title$title <- gsub("u s", "us", title$title, fixed=TRUE)
 ```
-
-
-
 
 
 ### Getting words and bigrams
@@ -108,7 +103,6 @@ title3 <- title3 %>%
   mutate(SQLDATE = as.Date(as.character(SQLDATE), format = "%Y%m%d")) %>%
   mutate(Year = format(SQLDATE, "%Y")) %>%
   select(-variable)
-
 ```
 
 Bigram
@@ -161,8 +155,19 @@ obama <- events %>%
   filter(obama == 1)
 
 t.test(trump$GoldsteinScale, obama$GoldsteinScale)
-
 ```
+
+Welch Two Sample t-test
+
+data:  trump$GoldsteinScale and obama$GoldsteinScale
+t = -9.6799, df = 167930, p-value < 2.2e-16
+alternative hypothesis: true difference in means is not equal to 0
+95 percent confidence interval:
+ -0.1962014 -0.1301270
+sample estimates:
+mean of x mean of y 
+0.7219720 0.8851362 
+
 ## Data Visualization(R)
 Wordcloud of one-word and bigram
 ```r
