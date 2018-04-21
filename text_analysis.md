@@ -1,4 +1,4 @@
-# Text Analysis - How to make the data speak
+# Publishing Star - How to make the data speak
 ## Data Extraction from BigQuery(SQL)
 
 
