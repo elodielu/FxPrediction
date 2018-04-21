@@ -1,4 +1,4 @@
-# How to make the data speak
+# Text Analysis - How to make the data speak
 ## Data Extraction from BigQuery(SQL)
 
 
