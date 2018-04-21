@@ -1,5 +1,21 @@
 # How to make the data speak
 ## Data Extraction from BigQuery(SQL)
+``` sql
+SELECT * 
+FROM [gdelt-bq:full.events] 
+WHERE sourceurl 
+LIKE '%bloomberg.com%';
+
+
+SELECT
+  year,count(sourceurl) AS count
+FROM
+  [Publisher.Bloomberg]
+WHERE
+  sourceurl LIKE '%trump%'
+GROUP BY year
+ORDER BY count;
+```
 
 ## Data Wrangeling(R)
 ```r
