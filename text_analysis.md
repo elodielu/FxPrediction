@@ -9,7 +9,7 @@ WHERE sourceurl
 LIKE '%bloomberg.com%'; -- filter by source url
 ```
 [Create Table in BigQuery](https://cloud.google.com/bigquery/docs/tables) <br>
-Ctreat a bucket in Google Cloud <br>
+[Creat a bucket in Google Cloud](https://cloud.google.com/storage/docs/creating-buckets)<br>
 [Export Table to Google Cloud](https://cloud.google.com/bigquery/docs/exporting-data)
 
 ## Data Wrangeling(R)
