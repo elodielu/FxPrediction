@@ -75,7 +75,19 @@ title <- title %>%
                  ifelse((publisher == "WashingtonPost") & grepl("-",e) & !grepl(".html",e),e,
                  ifelse((publisher == "WashingtonPost") & grepl("-",d) & !grepl(".html",d),d,
                  ifelse((publisher == "WashingtonPost") & grepl("-",c) & !grepl(".html",c),c,b
+                 ))))))))))))))))
+
+title$title <- gsub("-", " ", title$title, fixed=TRUE)
+title$title <- gsub("_", " ", title$title, fixed=TRUE)
+title$title <- gsub(".html", "", title$title, fixed=TRUE)
+title$title <- gsub("%E2%80%8B", "", title$title, fixed=TRUE)
+title$title <- gsub("([0-9]+).*$", "", title$title, fixed=TRUE)
+title$title <- gsub("u s", "us", title$title, fixed=TRUE)
 ```
+
+
+
+
 
 ### Getting words and bigrams
 Words
@@ -120,16 +132,60 @@ title5 <- rbind(title4,title3) #combine the words and bigram
 
 #head(title4,20)
 ```
+```r
+mention <- title5 %>%
+  filter(value != "") %>%
+  group_by(publisher, Year, value) %>%
+  summarise(freq = n()) %>%
+  top_n(n = 50, wt = freq)
 
+title6 <- title3 %>%
+  mutate(trump = ifelse(grepl("trump",title),1,0),
+         obama = ifelse(grepl("obama",title),1,0))
+
+events <- title %>%
+  select(GLOBALEVENTID,trump,obama) %>%
+  right_join(events,by = "GLOBALEVENTID")
+
+#write.csv(mention,"mention.csv")
+#write.csv(events,"events.csv")
+```
+**T-test of G-score**
+```{r}
+trump <- events %>%
+  select(GoldsteinScale,trump) %>%
+  filter(trump == 1)
+
+obama <- events %>%
+  select(GoldsteinScale,obama) %>%
+  filter(obama == 1)
+
+t.test(trump$GoldsteinScale, obama$GoldsteinScale)
+
+```
+## Data Visualization(R)
 Wordcloud of one-word and bigram
 ```r
 title5 %>%
   group_by(Year, value) %>%
   summarise(freq = n()) %>%
   ungroup() %>%
-  filter(Year == "2014") %>%
+  filter(Year == "2017") %>% #get yearly wordcloud
   select(-Year) %>%
   arrange(desc(freq)) %>%
   top_n(200) %>%
   wordcloud2(color = "random-light")                     
 ```
+Pubisher(Washington Post, WSJ, New York Times, Bloomberg, Vogue, Cosmopolitan, New Yorker)
+```r
+title5 %>%
+  filter(publisher == "WashingtonPost" ) %>%  #get wordcloud by publisher 
+  group_by(Year, value) %>%
+  summarise(freq = n()) %>%
+  ungroup() %>%
+  filter(Year == "2017") %>% #filter out by year
+  select(-Year) %>%
+  arrange(desc(freq)) %>%
+  top_n(200) %>%
+  wordcloud2(color = "random-light")
+  ```
