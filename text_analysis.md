@@ -8,6 +8,8 @@ FROM [gdelt-bq:full.events]
 WHERE sourceurl 
 LIKE '%bloomberg.com%'; -- filter by source url
 ```
+The results from the query is too big(10,000 results limit) to be export directly from BigQuery's web UI, therefore, we need to create a table to store the results and export it to cloud and then download. Follows are the Google documentations for these steps.
+
 [Create Table in BigQuery](https://cloud.google.com/bigquery/docs/tables) <br>
 [Creat a bucket in Google Cloud](https://cloud.google.com/storage/docs/creating-buckets)<br>
 [Export Table to Google Cloud](https://cloud.google.com/bigquery/docs/exporting-data)
