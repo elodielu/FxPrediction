@@ -159,14 +159,14 @@ t.test(trump$GoldsteinScale, obama$GoldsteinScale)
 
 Welch Two Sample t-test
 
-data:  trump$GoldsteinScale and obama$GoldsteinScale
-t = -9.6799, df = 167930, p-value < 2.2e-16
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -0.1962014 -0.1301270
-sample estimates:
-mean of x mean of y 
-0.7219720 0.8851362 
+data:  trump$GoldsteinScale and obama$GoldsteinScale_
+t = -9.6799, df = 167930, p-value < 2.2e-16_
+alternative hypothesis: true difference in means is not equal to 0_
+95 percent confidence interval:_
+ -0.1962014 -0.1301270_
+sample estimates:_
+mean of x mean of y_
+0.7219720 0.8851362_
 
 ## Data Visualization(R)
 Wordcloud of one-word and bigram
