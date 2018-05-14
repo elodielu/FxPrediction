@@ -18,6 +18,21 @@ The results from the query is too big(10,000 results limit) to be export directl
 [Export Table to Google Cloud](https://cloud.google.com/bigquery/docs/exporting-data)
 
 ## Data Wrangeling(R)
+```{r}
+suppressPackageStartupMessages({
+  library(ggplot2)
+  library(dplyr)
+  library(tidyr)
+  library(reshape2)
+  library(readr)
+  library(urltools)
+  library(tm)
+  library(wordcloud2)
+  library(RColorBrewer)
+  library(tidytext)
+})
+```
+
 ```r
 wsj <- read.csv("wsj.csv")
 bloomberg <- read.csv("bloomberg.csv")
